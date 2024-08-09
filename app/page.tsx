@@ -1,7 +1,8 @@
-import { useNavigate } from "react-router-dom";
+"use client";
+import { useRouter } from "next/navigation";
 
-export function Landing() {
-  const navigate = useNavigate();
+export default function Home() {
+  const router = useRouter();
 
   return (
     <main className="flex-grow">
@@ -14,11 +15,11 @@ export function Landing() {
           <p className="text-lg text-gray-700 mb-8">
             Create and distribute targeted web3 ads directly to interested users. Empowering user control, transparency, and engagement in advertising!
           </p>
-          <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700" onClick={() => navigate("/create/advertiser")}>
-            I'm an Advertiser
+          <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700" onClick={() => router.push("create/advertiser")}>
+            I&apos;m an Advertiser
           </button>
-          <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700 ml-4" onClick={() => navigate("/create/user")}>
-            I'm a User
+          <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700 ml-4" onClick={() => router.push("create/user")}>
+            I&apos;m a User
           </button>
         </div>
       </section>
@@ -57,7 +58,7 @@ export function Landing() {
           <p className="text-lg mb-8">
             Sign up now to start creating and distributing ad NFTs, or onboard to receive ads that matter to you.
           </p>
-          <button className="bg-white text-indigo-600 py-2 px-6 rounded-full hover:bg-gray-200" onClick={() => navigate("/create")}>
+          <button className="bg-white text-indigo-600 py-2 px-6 rounded-full hover:bg-gray-200" onClick={() => router.push("create")}>
             Get Started
           </button>
         </div>

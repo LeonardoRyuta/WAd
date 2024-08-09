@@ -1,3 +1,4 @@
+"use client";
 import { IDKitWidget, VerificationLevel, ISuccessResult } from "@worldcoin/idkit"
 
 export function WorldCoin() {
@@ -20,11 +21,12 @@ export function WorldCoin() {
 
   return (
     <IDKitWidget
-      app_id="app_staging_df9306233246632b32fd3e1db60ccecc" // obtained from the Developer Portal
+      app_id={`app_${process.env.WORLDCOIN_APP_ID}`}  // obtained from the Developer Portal
       action="ad" // obtained from the Developer Portal
+      signal={"0x2346ac3Bc15656D4dE1da99384B5498A75f128a2"}
       onSuccess={onSuccess} // callback when the modal is closed
-      handleVerify={handleVerify} // callback when the proof is received
-      verification_level={VerificationLevel.Orb}
+    // handleVerify={handleVerify} // callback when the proof is received
+    // verification_level={VerificationLevel.Orb}
     >
       {({ open }) =>
         // This is the button that will open the IDKit modal

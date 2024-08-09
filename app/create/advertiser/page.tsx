@@ -1,4 +1,4 @@
-export function Advertiser() {
+export default function Advertiser() {
   return (
     <section className="w-full p-4">
       <div className="flex justify-center items-center">

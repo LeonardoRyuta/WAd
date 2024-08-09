@@ -1,6 +1,7 @@
+"use client";
 import { useState } from 'react';
 
-export function User() {
+export default function User() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
 
   const interests = [
