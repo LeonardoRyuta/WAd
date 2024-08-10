@@ -2,9 +2,13 @@
 pragma solidity ^0.8.13;
 
 import "./Collection.sol";
+import "contracts/lib/Strings.sol";
 
 contract Factory {
-    Collection[] public collections;
+    using Strings for uint256;
+    address[] private collections;
+
+    mapping(address => string[]) public interests;
 
     event CollectionCreated(address collectionAddress);
 
@@ -15,14 +19,14 @@ contract Factory {
         string memory symbol
     ) public {
         Collection newCollection = new Collection(
-            msg.sender,
+            address(this),
             name,
             symbol,
             msg.sender,
             1000
         );
 
-        collections.push(newCollection);
+        collections.push(address(newCollection));
 
         for (uint i = 0; i < targets.length; i++) {
             newCollection.mintTo(
@@ -32,5 +36,19 @@ contract Factory {
         }
 
         emit CollectionCreated(address(newCollection));
+    }
+
+    function getCollections() public view returns (address[] memory) {
+        return collections;
+    }
+
+    function getInterestsByUser(
+        address _user
+    ) public view returns (string[] memory) {
+        return interests[_user];
+    }
+
+    function pushInterest(address _user, string[] memory _interests) public {
+        interests[_user] = _interests;
     }
 }

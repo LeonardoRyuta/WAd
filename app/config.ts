@@ -5,7 +5,7 @@ import { QueryClient } from "@tanstack/react-query";
 const uiConfig: AlchemyAccountsUIConfig = {
   illustrationStyle: "outline",
   auth: {
-    sections: [[{ "type": "email" }], [{ "type": "passkey" }]],
+    sections: [[{ "type": "email" }], [{ "type": "passkey" }, { "type": "injected" }]],
     addPasskeyOnSignup: true,
   },
 };

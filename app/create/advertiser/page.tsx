@@ -1,3 +1,5 @@
+import { EmbedPay } from "@/components";
+
 export default function Advertiser() {
   return (
     <section className="w-full p-4">
@@ -55,13 +57,14 @@ export default function Advertiser() {
             </div>
 
             {/* Submit Button */}
-            <div className="flex justify-center mt-6">
+            <div className="flex justify-between mt-6">
               <button
                 type="submit"
                 className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700"
               >
                 Create Ad
               </button>
+              <EmbedPay />
             </div>
           </form>
         </div>

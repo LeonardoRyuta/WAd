@@ -41,7 +41,7 @@ export default withAccountKitUi({
 }, {
   // override account kit themes
   colors: {
-    "btn-primary": createColorSet("#363FF9", "#9AB7FF"),
-    "fg-accent-brand": createColorSet("#363FF9", "#9AB7FF"),
+    "btn-primary": createColorSet("#766ee6", "#9AB7FF"),
+    "fg-accent-brand": createColorSet("#766ee6", "#9AB7FF"),
   },
 })
