@@ -8,11 +8,12 @@ import { useUser } from '@account-kit/react';
 export default function Ad({ params }: { params: { slug: string } }) {
   const user = useUser();
   const adId = params.slug;
-  const [finished, setFinished] = useState(true); // Set to false to show the video
+  const [finished, setFinished] = useState(false); // Set to false to show the video
   const [adDetails, setAdDetails] = useState();
   const [hash, setHash] = useState<`0x${string}`>();
   const [toast, setToast] = useState<JSX.Element | null>(null);
   const [claimed, setClaimed] = useState<boolean>(false);
+  const [hasVerified, setHasVerified] = useState<boolean>(false);
 
   const chains = ['Optimism', 'Base', 'Metal', 'Celo', 'Mode'];
 
@@ -108,17 +109,19 @@ export default function Ad({ params }: { params: { slug: string } }) {
             <h1 className="text-2xl font-bold text-gray-800">Claim your reward</h1>
             <p className="text-center text-gray-500 mt-4">Thank you for watching this ad, you can now claim your reward!</p>
             <div className="mt-6">
-              <WorldCoin />
               {
                 claimed ? (
                   <p className="text-center text-gray-500">You have already claimed your reward for this ad.</p>
-                ) : (
+                ) : hasVerified ? (
                   <button
                     onClick={handleClaimReward}
                     className="mt-4 bg-indigo-600 text-white py-2 px-4 rounded-lg hover:bg-indigo-700 shadow-md"
                   >
                     Claim Reward
                   </button>
+                ) : (
+                  <WorldCoin setHasVerified={setHasVerified} />
+
                 )
               }
             </div>
@@ -143,6 +146,6 @@ export default function Ad({ params }: { params: { slug: string } }) {
           </div>
         )
       }
-    </div>
+    </div >
   );
 }

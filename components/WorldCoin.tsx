@@ -1,7 +1,7 @@
 "use client";
 import { IDKitWidget, VerificationLevel, ISuccessResult } from "@worldcoin/idkit"
 
-export function WorldCoin() {
+export function WorldCoin({ setHasVerified }: { setHasVerified: (value: boolean) => void }) {
   const handleVerify = async (proof: ISuccessResult) => {
     const res = await fetch("/api/verify", { // route to your backend will depend on implementation
       method: "POST",
@@ -16,12 +16,13 @@ export function WorldCoin() {
   };
 
   const onSuccess = () => {
+    setHasVerified(true);
     console.log("Success")
   };
 
   return (
     <IDKitWidget
-      app_id={`app_${process.env.WORLDCOIN_APP_ID}`}  // obtained from the Developer Portal
+      app_id={`app_staging_df9306233246632b32fd3e1db60ccecc`}  // obtained from the Developer Portal
       action="ad" // obtained from the Developer Portal
       signal={"0x2346ac3Bc15656D4dE1da99384B5498A75f128a2"}
       onSuccess={onSuccess} // callback when the modal is closed
@@ -30,7 +31,7 @@ export function WorldCoin() {
     >
       {({ open }) =>
         // This is the button that will open the IDKit modal
-        <button onClick={open}>Verify with World ID</button>
+        <button onClick={open} className="text-gray-700">Verify with World ID</button>
       }
     </IDKitWidget>
   );
