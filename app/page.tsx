@@ -9,7 +9,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="bg-white py-16">
         <div className="container mx-auto text-center px-6">
-          <h2 className="text-4xl font-bold mb-4">
+          <h2 className="text-4xl font-bold mb-4 text-gray-700">
             Revolutionize Digital Advertising with Web3
           </h2>
           <p className="text-lg text-gray-700 mb-8">
@@ -21,6 +21,11 @@ export default function Home() {
           <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700 ml-4" onClick={() => router.push("create/user")}>
             I&apos;m a User
           </button>
+          <div className="w-full flex justify-center mt-6">
+            <button className="bg-indigo-600 text-white py-2 px-6 rounded-full hover:bg-indigo-700 ml-4" onClick={() => router.push("feed")}>
+              Go to Feed
+            </button>
+          </div>
         </div>
       </section>
 
@@ -39,12 +44,6 @@ export default function Home() {
               <h4 className="text-xl font-semibold mb-2">Feed Ads</h4>
               <p className="mb-4">
                 Post an ad on our feed, receive ads that matter to you, and earn rewards for engaging with ads.
-              </p>
-            </div>
-            <div className="max-w-sm m-4 p-6 bg-white rounded-lg shadow-md text-center">
-              <h4 className="text-xl font-semibold mb-2">Farcaster Ads</h4>
-              <p className="mb-4">
-                Create and send ads to users directly through Farcaster. Users can receive ads without sharing personal data
               </p>
             </div>
           </div>

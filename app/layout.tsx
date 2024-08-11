@@ -6,6 +6,7 @@ import { config } from "./config";
 import { cookieToInitialState } from "@account-kit/core";
 import { Providers } from "./providers";
 import { headers } from "next/headers";
+import { ThirdwebProvider } from "thirdweb/react";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -27,12 +28,16 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
+        {/* <ThirdwebProvider> */}
         <Providers initialState={initialState}>
-          <div className="min-h-screen bg-gray-100 flex flex-col">
-            <Navbar />
-            {children}
-          </div>
+          <ThirdwebProvider>
+            <div className="min-h-screen bg-gray-100 flex flex-col">
+              <Navbar />
+              {children}
+            </div>
+          </ThirdwebProvider>
         </Providers>
+        {/* </ThirdwebProvider> */}
       </body>
     </html>
   );

@@ -1,5 +1,134 @@
 [
   {
+    "type": "constructor",
+    "inputs": [
+      {
+        "name": "_router",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_link",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "receive",
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
+    "name": "acceptOwnership",
+    "inputs": [],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "adCount",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "ads",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "ipfsHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "pool",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "splitCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "claimedCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "allowlistDestinationChain",
+    "inputs": [
+      {
+        "name": "_destinationChainSelector",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "allowed",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "allowlistedChains",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "claimReward",
+    "inputs": [
+      {
+        "name": "adId",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
     "type": "function",
     "name": "createNFTAd",
     "inputs": [
@@ -26,6 +155,97 @@
     ],
     "outputs": [],
     "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "getAdDetails",
+    "inputs": [
+      {
+        "name": "adId",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "ipfsHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "pool",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "splitCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "claimedCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAdIdByIPFSHash",
+    "inputs": [
+      {
+        "name": "_ipfsHash",
+        "type": "string",
+        "internalType": "string"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "getAllAds",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "ipfsHashes",
+        "type": "string[]",
+        "internalType": "string[]"
+      },
+      {
+        "name": "titles",
+        "type": "string[]",
+        "internalType": "string[]"
+      },
+      {
+        "name": "pools",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "splitCounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      },
+      {
+        "name": "claimedCounts",
+        "type": "uint256[]",
+        "internalType": "uint256[]"
+      }
+    ],
+    "stateMutability": "view"
   },
   {
     "type": "function",
@@ -61,6 +281,30 @@
   },
   {
     "type": "function",
+    "name": "hasClaimed",
+    "inputs": [
+      {
+        "name": "",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "",
+        "type": "bool",
+        "internalType": "bool"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
     "name": "interests",
     "inputs": [
       {
@@ -85,6 +329,42 @@
   },
   {
     "type": "function",
+    "name": "owner",
+    "inputs": [],
+    "outputs": [
+      {
+        "name": "",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "stateMutability": "view"
+  },
+  {
+    "type": "function",
+    "name": "postAd",
+    "inputs": [
+      {
+        "name": "_ipfsHash",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "_title",
+        "type": "string",
+        "internalType": "string"
+      },
+      {
+        "name": "_splitCount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "payable"
+  },
+  {
+    "type": "function",
     "name": "pushInterest",
     "inputs": [
       {
@@ -102,6 +382,155 @@
     "stateMutability": "nonpayable"
   },
   {
+    "type": "function",
+    "name": "transferOwnership",
+    "inputs": [
+      {
+        "name": "to",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "transferTokensPayLINK",
+    "inputs": [
+      {
+        "name": "_destinationChainSelector",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "_receiver",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_token",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "messageId",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "transferTokensPayNative",
+    "inputs": [
+      {
+        "name": "_destinationChainSelector",
+        "type": "uint64",
+        "internalType": "uint64"
+      },
+      {
+        "name": "_receiver",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_token",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_amount",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ],
+    "outputs": [
+      {
+        "name": "messageId",
+        "type": "bytes32",
+        "internalType": "bytes32"
+      }
+    ],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "withdraw",
+    "inputs": [
+      {
+        "name": "_beneficiary",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "function",
+    "name": "withdrawToken",
+    "inputs": [
+      {
+        "name": "_beneficiary",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "_token",
+        "type": "address",
+        "internalType": "address"
+      }
+    ],
+    "outputs": [],
+    "stateMutability": "nonpayable"
+  },
+  {
+    "type": "event",
+    "name": "AdPosted",
+    "inputs": [
+      {
+        "name": "adId",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "ipfsHash",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      },
+      {
+        "name": "title",
+        "type": "string",
+        "indexed": false,
+        "internalType": "string"
+      },
+      {
+        "name": "pool",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "splitCount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
     "type": "event",
     "name": "CollectionCreated",
     "inputs": [
@@ -113,5 +542,169 @@
       }
     ],
     "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OwnershipTransferRequested",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "to",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "OwnershipTransferred",
+    "inputs": [
+      {
+        "name": "from",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      },
+      {
+        "name": "to",
+        "type": "address",
+        "indexed": true,
+        "internalType": "address"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "RewardClaimed",
+    "inputs": [
+      {
+        "name": "user",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "amount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "event",
+    "name": "TokensTransferred",
+    "inputs": [
+      {
+        "name": "messageId",
+        "type": "bytes32",
+        "indexed": true,
+        "internalType": "bytes32"
+      },
+      {
+        "name": "destinationChainSelector",
+        "type": "uint64",
+        "indexed": true,
+        "internalType": "uint64"
+      },
+      {
+        "name": "receiver",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "token",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "tokenAmount",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      },
+      {
+        "name": "feeToken",
+        "type": "address",
+        "indexed": false,
+        "internalType": "address"
+      },
+      {
+        "name": "fees",
+        "type": "uint256",
+        "indexed": false,
+        "internalType": "uint256"
+      }
+    ],
+    "anonymous": false
+  },
+  {
+    "type": "error",
+    "name": "DestinationChainNotAllowlisted",
+    "inputs": [
+      {
+        "name": "destinationChainSelector",
+        "type": "uint64",
+        "internalType": "uint64"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "FailedToWithdrawEth",
+    "inputs": [
+      {
+        "name": "owner",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "target",
+        "type": "address",
+        "internalType": "address"
+      },
+      {
+        "name": "value",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "InvalidReceiverAddress",
+    "inputs": []
+  },
+  {
+    "type": "error",
+    "name": "NotEnoughBalance",
+    "inputs": [
+      {
+        "name": "currentBalance",
+        "type": "uint256",
+        "internalType": "uint256"
+      },
+      {
+        "name": "calculatedFees",
+        "type": "uint256",
+        "internalType": "uint256"
+      }
+    ]
+  },
+  {
+    "type": "error",
+    "name": "NothingToWithdraw",
+    "inputs": []
   }
 ]

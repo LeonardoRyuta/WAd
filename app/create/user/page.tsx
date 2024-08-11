@@ -1,16 +1,17 @@
 "use client";
 import { useState } from 'react';
-import { useUser, useSmartAccountClient } from '@account-kit/react';
+import { useUser, useSmartAccountClient, useSigner } from '@account-kit/react';
 import { AALogin } from '@/components';
 import FactoryABI from "../../abi/Factory.json";
-import { encodeFunctionData } from 'viem';
+import { encodeFunctionData, createWalletClient, custom } from 'viem';
+import { baseSepolia } from "viem/chains";
+import { factoryContractAddress } from '@/utils';
 
 export default function User() {
   const [selectedInterests, setSelectedInterests] = useState<string[]>([]);
   const user = useUser();
   const { isLoadingClient, client } = useSmartAccountClient({
     type: "LightAccount",
-
   });
 
   const interests = [
@@ -41,24 +42,39 @@ export default function User() {
   };
 
   const pushInterests = async () => {
-    console.log("isLoadingClient", isLoadingClient);
-    console.log("client", client);
+    // console.log("isLoadingClient", isLoadingClient);
+    // console.log("client", client);
 
-    const uoCallData = encodeFunctionData({
+    // const uoCallData = encodeFunctionData({
+    //   abi: FactoryABI,
+    //   functionName: 'pushInterest',
+    //   args: [user?.address, selectedInterests],
+    // });
+
+    // const uo = await client?.sendUserOperation({
+    //   uo: {
+    //     target: "0x90E882F10c77af76956e87066A478A379C20759A",
+    //     data: uoCallData,
+    //   },
+    // });
+
+    // const txHash = await client?.waitForUserOperationTransaction(uo!);
+    // console.log(txHash);
+
+    const walletClient = createWalletClient({
+      chain: baseSepolia,
+      transport: custom((window as any).ethereum!),
+    });
+
+    const [address] = await walletClient.getAddresses();
+
+    await walletClient.writeContract({
+      address: factoryContractAddress,
       abi: FactoryABI,
-      functionName: 'pushInterest',
-      args: [user?.address, selectedInterests],
+      functionName: "pushInterest",
+      account: address,
+      args: [address, selectedInterests],
     });
-
-    const uo = await client?.sendUserOperation({
-      uo: {
-        target: "0x90E882F10c77af76956e87066A478A379C20759A",
-        data: uoCallData,
-      },
-    });
-
-    const txHash = await client?.waitForUserOperationTransaction(uo!);
-    console.log(txHash);
   };
 
 

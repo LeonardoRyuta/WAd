@@ -1,0 +1,1 @@
+export const factoryContractAddress = '0xbdA392743aAc77A93C5a260Cb0e1159db5c8eEC5';
