@@ -1,36 +1,70 @@
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+# Web3 Advertisments (WAd)
 
-## Getting Started
+This project is a Web3-based advertising platform that allows advertisers to create and distribute ads on the blockchain. The platform enables the creation of both NFT-based ads and feed-based ads, utilizing IPFS for decentralized storage of media files. Users can claim rewards from ad pools, which are distributed based on parameters set by the advertisers.
 
-First, run the development server:
+## Table of Contents
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+- [Features](#features)
+- [Smart Contracts](#smart-contracts)
+- [Frontend Application](#frontend-application)
+- [Installation](#installation)
+- [Usage](#usage)
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Features
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **NFT Ads**: Advertisers can create NFT-based ads that are distributed to specific addresses.
+- **Feed Ads**: Advertisers can post feed ads with associated reward pools for user engagement.
+- **IPFS Integration**: Ads are stored on IPFS, ensuring decentralized and immutable storage.
+- **Reward Distribution**: Advertisers can set up ETH pools that are distributed as rewards to users who engage with the ads.
+- **Blockchain Integration**: The platform is built on the OP Stack using smart contracts.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+## Smart Contracts
 
-## Learn More
+The smart contracts manage ad creation, reward distribution, and user interactions.
 
-To learn more about Next.js, take a look at the following resources:
+### Factory Contract
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+The `Factory` contract handles:
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+- **Ad Creation**: Creating and managing NFT and feed ads.
+- **Reward Pools**: Managing reward distribution based on ad interactions.
+- **User Interests**: Storing and retrieving user interests.
+- **IPFS Hash Management**: Storing and retrieving IPFS hashes for ads.
 
-## Deploy on Vercel
+#### Key Functions
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `createNFTAd(string _baseURI, address[] memory targets, string memory name, string memory symbol)`: Creates an NFT-based ad and distributes it to target addresses.
+- `postAd(string memory _ipfsHash, uint256 _splitCount)`: Posts a feed ad with an associated ETH pool.
+- `claimReward(uint256 adId)`: Allows users to claim rewards from an ad's pool.
+- `getAdDetails(uint256 adId)`: Returns details of a specific ad.
+- `getAllAds()`: Returns details of all ads, including title, IPFS hash, and reward pool info.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
+## Frontend Application
+
+The frontend is built with **React** and **TailwindCSS**, providing a user-friendly interface for advertisers and users. It includes:
+
+- **Ad Creation Form**: Allows advertisers to create ads, with an advanced section for additional options.
+- **Feed Page**: Displays a series of ad thumbnails that users can click to watch and earn rewards.
+- **Ad Viewing Page**: Shows the selected ad video, which users must watch to completion to claim rewards.
+- **Chain Selector**: Allows users to select their preferred blockchain to claim rewards.
+
+## Installation
+
+To install and run this project locally:
+
+1. **Clone the repository**:
+   ```bash
+   git clone https://github.com/LeonardoRyuta/WAd.git
+   cd WAd
+   ```
+   
+2. **Install dependencies**:
+  ```bash
+  npm install
+  ```
+
+3. **Start the developmnet server**:
+   ```bash
+   npm run dev
+   ```
+
